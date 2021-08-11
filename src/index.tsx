@@ -97,6 +97,7 @@ export default class ReactToPrint extends React.Component<IReactToPrintProps> {
                             }
                         });
                 } else if (target.contentWindow.print) {
+                    console.log(1);
                     // NOTE: Overrides the page's title during the print process
                     const tempTitle = document.title;
                     if (documentTitle) {
@@ -119,8 +120,6 @@ export default class ReactToPrint extends React.Component<IReactToPrintProps> {
                         console.error("Printing for this browser is not currently possible: the browser does not have a `print` method available for iframes."); // eslint-disable-line no-console
                     }
                 }
-
-                this.handleRemoveIframe();
             } else {
                 if (!suppressErrors) {
                     console.error("Printing failed because the `contentWindow` of the print iframe did not load. This is possibly an error with `react-to-print`. Please file an issue: https://github.com/gregnb/react-to-print/issues/"); // eslint-disable-line no-console
